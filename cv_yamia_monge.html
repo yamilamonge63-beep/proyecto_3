@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Yamia Monge</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 60px 40px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .photo-container {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid white;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #667eea;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .header-info h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header-info .profession {
+            font-size: 22px;
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+        }
+
+        .contact-item i {
+            font-size: 18px;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-btn:hover {
+            background: #20BA5A;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #764ba2;
+            transition: all 0.3s;
+        }
+
+        .experience-item:hover, .education-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .experience-item h3, .education-item h3 {
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .experience-item p, .education-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .hobbies-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .hobby-tag {
+            background: #f8f9fa;
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: #667eea;
+            font-weight: 500;
+            border: 2px solid #667eea;
+            transition: all 0.3s;
+        }
+
+        .hobby-tag:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .info-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #764ba2;
+        }
+
+        .info-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-card p {
+            color: #666;
+        }
+
+        .download-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 18px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.7);
+        }
+
+        .download-btn i {
+            font-size: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-info h1 {
+                font-size: 32px;
+            }
+
+            .contact-info {
+                justify-content: center;
+            }
+
+            .download-btn {
+                bottom: 15px;
+                right: 15px;
+                padding: 15px 25px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <div class="photo-container">
+                    <!-- Agregar imagen aquí: <img src="ruta/a/foto.jpg" alt="Yamia Monge"> -->
+                    <p>Espacio para foto personal</p>
+                </div>
+                <div class="header-info">
+                    <h1>Yamia Monge</h1>
+                    <p class="profession">Empleada de Comercio</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Av. Barrio Itaembe Guazu, Posadas</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/5493764XXXXXX" class="whatsapp-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        Contactar por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-briefcase"></i>
+                    Experiencia Profesional
+                </h2>
+                <div class="experience-item">
+                    <h3>Empleada de Comercio - Actualidad</h3>
+                    <p>Desempeñando funciones comerciales y atención al cliente con compromiso y profesionalismo.</p>
+                </div>
+                <div class="experience-item">
+                    <h3>Vendedora y Cajera</h3>
+                    <p>Experiencia previa en ventas directas y manejo de caja, desarrollando habilidades de atención al cliente y gestión comercial.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-graduation-cap"></i>
+                    Educación y Formación
+                </h2>
+                <div class="education-item">
+                    <h3>Secundario Completo</h3>
+                    <p>Formación académica completa de nivel medio.</p>
+                </div>
+                <div class="education-item">
+                    <h3>Estudiante de Recursos Digitales - En curso</h3>
+                    <p>Actualmente perfeccionando conocimientos en herramientas y estrategias digitales.</p>
+                </div>
+                <div class="education-item">
+                    <h3>Curso de Informática</h3>
+                    <p>Capacitación en herramientas informáticas y ofimática.</p>
+                </div>
+                <div class="education-item">
+                    <h3>Curso de Administración Contable</h3>
+                    <p>Formación en principios contables y administrativos aplicados al ámbito comercial.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-star"></i>
+                    Habilidades
+                </h2>
+                <div class="skills-grid">
+                    <div class="skill-item">Atención al Cliente</div>
+                    <div class="skill-item">Ventas</div>
+                    <div class="skill-item">Manejo de Caja</div>
+                    <div class="skill-item">Informática</div>
+                    <div class="skill-item">Administración</div>
+                    <div class="skill-item">Gestión Contable</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-language"></i>
+                    Idiomas
+                </h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4><i class="fas fa-check-circle"></i> Español</h4>
+                        <p>Nativo</p>
+                    </div>
+                    <div class="info-card">
+                        <h4><i class="fas fa-check-circle"></i> Inglés</h4>
+                        <p>Nivel Básico</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-info-circle"></i>
+                    Información Adicional
+                </h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4><i class="fas fa-clock"></i> Disponibilidad Horaria</h4>
+                        <p>Lunes a viernes por la tarde desde las 16:00 hs</p>
+                    </div>
+                    <div class="info-card">
+                        <h4><i class="fas fa-car"></i> Medio de Transporte</h4>
+                        <p>No cuento con vehículo propio</p>
+                    </div>
+                    <div class="info-card">
+                        <h4><i class="fas fa-map-marked-alt"></i> Radicación</h4>
+                        <p>No disponible para cambio de residencia</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-heart"></i>
+                    Intereses y Hobbies
+                </h2>
+                <div class="hobbies-container">
+                    <div class="hobby-tag"><i class="fas fa-music"></i> Escuchar Música</div>
+                    <div class="hobby-tag"><i class="fas fa-guitar"></i> Tocar Guitarra</div>
+                    <div class="hobby-tag"><i class="fas fa-swimmer"></i> Natación</div>
+                    <div class="hobby-tag"><i class="fas fa-volleyball-ball"></i> Vóley</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" class="download-btn" onclick="downloadPDF(); return false;">
+        <i class="fas fa-download"></i>
+        Descargar CV en PDF
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        function downloadPDF() {
+            const element = document.querySelector('.container');
+            const downloadBtn = document.querySelector('.download-btn');
+            
+            downloadBtn.style.display = 'none';
+            
+            const opt = {
+                margin: 0,
+                filename: 'CV_Yamia_Monge.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                downloadBtn.style.display = 'flex';
+            });
+        }
+
+        document.querySelectorAll('.skill-item, .hobby-tag, .experience-item, .education-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = this.classList.contains('skill-item') ? 'translateY(-5px)' : 'translateX(10px)';
+            });
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        });
+    </script>
+</body>
+</html>
